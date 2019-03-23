@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 
 <head>
@@ -11,9 +11,31 @@
 </head>
 
 <body>
-	<main>
-		<h1 class="visually-hidden">Герои отечества. XX век</h1>
-		<a href="mainPages.html">Войти</a>
+  <main>
+    <h1 class="visually-hidden">Герои отечества. XX век</h1>
+    <button class="mute" onclick="mute(this, 'mute_video')"><img src="img/controls/off.png" width="20px"></button>
+		<a href="mainPages.html">
+      <div id="video-bg">        
+          <video id="mute_video" width="100%" height="auto" autoplay="autoplay" muted  preload="auto" poster="/img/main-bg.jpg">
+            <source src="video/begin.mp4" type="video/mp4"></source>
+            <source src="" type="video/webm"></source>            
+          </video>        
+        
+          <script type='text/javascript'>
+          function mute(btn,elem){
+              var video = document.getElementById(elem);
+              if (video.muted){
+                video.muted = false;
+                btn.innerHTML = "<img src='img/controls/on.png' width='20px'>";
+              } else{
+                video.muted = true;
+                btn.innerHTML = "<img src='img/controls/off.png' width='20px'>";
+              }
+            }        
+          document.getElementById('mute_video').addEventListener('ended', function(e) { window.location.href = 'mainPages.html';})          
+          </script>
+      </div>
+    </a>
 	</main>
 </body>
 

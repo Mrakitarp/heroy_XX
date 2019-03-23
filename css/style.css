@@ -1,10 +1,69 @@
 ﻿.visually-hidden {
-	position: absolute !important;
-	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
-	padding:0 !important;
-	border:0 !important;
-	height: 1px !important; 
-	width: 1px !important; 
-	overflow: hidden;
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+/* Стили для видеофона */
+#video-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  background: url(../img/main-bg.jpg) no-repeat;
+  background-size: cover;
+}
+
+#video-bg > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* Проверка на поддержку свойства object-fit: */
+
+@supports (object-fit: cover) {
+  #video-bg > video {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Отключение видео для устройств с размером экрана менее 800px: */
+
+@media screen and (max-device-width: 800px) {
+  #video-bg > video {
+    display: none;
+  }
+}
+
+.mute {
+  display: inline-block;
+  position: absolute;
+  margin: 40px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.25), inset 0 2px 0 rgba(255, 255, 255, 0.6), 0 2px 0 rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.mute:focus {
+  outline: none;
 }
